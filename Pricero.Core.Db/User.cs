@@ -1,28 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
-namespace Pricero.Core.Db
+namespace FindDiscount.Models
 {
-    public enum UserType
-    {
-        Normal,
-        Moderator,
-        Administrator
-    }
-
     public class User
     {
-        public Guid UserId { get; set; }
-        public string NickName { get; set; }
-        public string EMail { get; set; }
+        public int UserId { get; set; }
+        public string Nickname { get; set; }
+        public string Email { get; set; }
         public string PasswordSalt { get; set; }
         public string PasswordInitValue { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public UserType UserType { get; set; }
-
-        // Relations
-        public ForumPost Post { get; set; }
+        public string UserType { get; set; }
+        public virtual ICollection<Shop> Shops { get; set; }
+        public virtual ICollection<Message> SentMessages { get; set; }
+        public virtual ICollection<Message> ReceivedMessages { get; set; }
+        public virtual ICollection<UserPost> UserPosts { get; set; }
+        public virtual ICollection<FavouriteShop> FavouriteShops { get; set; }
+        public virtual ICollection<FavouriteProduct> FavouriteProducts { get; set; }
     }
 }

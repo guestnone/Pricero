@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace Pricero.Core.Db
+namespace FindDiscount.Models
 {
     public class Shop
     {
-        public Guid ShopId { get; set; }
+        public int ShopId { get; set; }
         public string Street { get; set; }
         public string Number { get; set; }
         public string PostalCode { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-
+        public virtual Chain Chain { get; set; }
+        public virtual ICollection<FavouriteShop> FavouriteShops { get; set; }
     }
 }

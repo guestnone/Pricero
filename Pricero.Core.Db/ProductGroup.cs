@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Web;
 
-namespace Pricero.Core.Db
+namespace FindDiscount.Models
 {
     public class ProductGroup
     {
-        public string ProductGroupType { get; set; }
-        public float BaseVatCharge { get; set; }
+        public string ProductGroupID { get; set; }
+
+        public double BaseVATCharge { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

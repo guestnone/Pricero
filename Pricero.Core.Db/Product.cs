@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Web;
 
-namespace Pricero.Core.Db
+namespace FindDiscount.Models
 {
     public class Product
     {
-        public Guid ProductId { get; set; }
+        public int ProductID { get; set; }
+
         public string ProductName { get; set; }
-        public float ProductWeight { get; set; }
+        public double ProductWeight { get; set; }
         public string UpcCode { get; set; }
 
-        // Relations
-        public Guid ProducerId { get; set; }
-        public string ProductGroupType { get; set; }
-
+        public virtual Producer Producer { get; set; }
+        public virtual ProductGroup ProductGroup { get; set; }
+        public virtual ICollection<PriceReport> PriceReports { get; set; }
+        public virtual ICollection<FavouriteProduct> FavouriteProducts { get; set; }
+        public virtual ICollection<ChainProduct> ChainProducts { get; set; }
     }
 }
