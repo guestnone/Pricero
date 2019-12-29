@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace FindDiscount.Models
+namespace Pricero.Core.Db
 {
     public class User
     {
