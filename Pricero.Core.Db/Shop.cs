@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace FindDiscount.Models
+namespace Pricero.Core.Db
 {
     public class Shop
     {

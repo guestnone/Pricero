@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace FindDiscount.Models
+namespace Pricero.Core.Db
 {
     public class FavouriteProduct
     {

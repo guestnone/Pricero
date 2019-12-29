@@ -1,4 +1,4 @@
-﻿using FindDiscount.Models;
+﻿using Pricero.Core.Db;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
