@@ -1,15 +1,15 @@
-﻿using Pricero.Core.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using Pricero.Core.Db;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace FindDiscount.DB
+namespace Pricero.Core.Db
 {
     public class FindDiscountDBContext : DbContext
     {
-        public FindDiscountDBContext() : base("name=FindDiscountDB") {
+        public FindDiscountDBContext() : base() {
 
         }
         
