@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Pricero.Core.Db
 {
-    public class Thread
+    public class ForumThread
     {
         public int ThreadID { get; set; }
         public DateTime ThreadDate { get; set; }

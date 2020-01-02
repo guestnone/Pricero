@@ -12,7 +12,7 @@ namespace Pricero.Core.Db
         public string PostContent { get; set; }
         
 
-        public virtual Thread Thread { get; set; }
+        public virtual ForumThread Thread { get; set; }
         public virtual User User { get; set; }
     }
 }

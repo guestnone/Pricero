@@ -11,6 +11,6 @@ namespace Pricero.Core.Db
         public DateTime SectionDate { get; set; }
         public string SectionTitle { get; set; }
 
-        public virtual ICollection<Thread> Threads { get; set; }
+        public virtual ICollection<ForumThread> Threads { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace Pricero.Core.Db
         public DbSet<PriceReport> PriceReports { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Section> Sections { get; set; }
-        public DbSet<Thread> Threads { get; set; }
+        public DbSet<ForumThread> Threads { get; set; }
         public DbSet<UserPost> UserPosts { get; set; }
         public DbSet<User> Users { get; set; }
     }
