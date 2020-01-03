@@ -7,9 +7,9 @@ using System.Web;
 
 namespace Pricero.Core.Db
 {
-    public class FindDiscountDBContext : DbContext
+    public class PriceroDBContext : DbContext
     {
-        public FindDiscountDBContext() : base() {
+        public PriceroDBContext() : base() {
 
         }
         
@@ -28,5 +28,22 @@ namespace Pricero.Core.Db
         public DbSet<ForumThread> ForumThreads { get; set; }
         public DbSet<UserPost> UserPosts { get; set; }
         public DbSet<User> Users { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            options.UseSqlite("Data Source=local_db.db");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Sets the composites for favourites
+            // See: https://stackoverflow.com/questions/40898365/asp-net-add-migration-composite-primary-key-error-how-to-use-fluent-api/40898681
+            modelBuilder.Entity<FavouriteProduct>()
+                .HasKey(c => new { c.ProductID, c.UserID});
+            modelBuilder.Entity<FavouriteShop>()
+                .HasKey(c => new { c.ShopID, c.UserID });
+        }
+
+
     }
 }
