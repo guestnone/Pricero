@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pricero.WpfAdmin"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="WPF Administration Environment for Pricero" Height="720" Width="1280"
+        Closing="MainWindow_OnClosing">
 
-    </Grid>
+    <Window.CommandBindings>
+        
+        <CommandBinding Command="{x:Static local:MainWindow.ExitCommand}" CanExecute="ExitCommand_CanExecute" Executed="ExitCommand_Executed" />
+    </Window.CommandBindings>
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Height="20">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit" Command="{x:Static local:MainWindow.ExitCommand}"/>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <TabControl Name="TabControl">
+                <TabControl.ItemContainerStyle>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Header" Value="{Binding Header}" />
+                        <Setter Property="Content" Value="{Binding Content}" />
+                    </Style>
+                </TabControl.ItemContainerStyle>
+            </TabControl>
+
+        </Grid>
+    </DockPanel>
 </Window>
