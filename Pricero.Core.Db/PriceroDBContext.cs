@@ -7,9 +7,9 @@ using System.Web;
 
 namespace Pricero.Core.Db
 {
-    public class FindDiscountDBContext : DbContext
+    public class PriceroDBContext : DbContext
     {
-        public FindDiscountDBContext() : base() {
+        public PriceroDBContext() : base() {
 
         }
         
