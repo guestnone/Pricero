@@ -7,7 +7,7 @@
              d:DesignHeight="450" d:DesignWidth="800"
             >
     <Grid>
-        <Label x:Name="notImplLabel" Content="Not implemented" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="388" FontSize="30" RenderTransformOrigin="0.504,0.5"/>
+        <Label x:Name="notImplLabel" Content="Not implemented" HorizontalAlignment="Left" VerticalAlignment="Center" Height="66" Width="388" FontSize="30" RenderTransformOrigin="0.504,0.5" Margin="283,0,0,0"/>
 
     </Grid>
 </UserControl>
