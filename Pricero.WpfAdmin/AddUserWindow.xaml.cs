@@ -34,6 +34,7 @@ namespace Pricero.WpfAdmin
 
         private void buttonOk_Click(object sender, RoutedEventArgs e)
         {
+            IsSave = true;
             User.Email = textBoxEMail.Text;
             User.FirstName = textBoxFirstName.Text;
             User.LastName = textBoxLastName.Text;
