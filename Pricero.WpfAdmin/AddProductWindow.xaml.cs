@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pricero.Core.Db;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,6 +18,9 @@ namespace Pricero.WpfAdmin
     /// </summary>
     public partial class AddProductWindow : Window
     {
+        public bool isSave = false;
+        public Product product = new Product();
+
         public AddProductWindow()
         {
             InitializeComponent();
@@ -24,12 +28,16 @@ namespace Pricero.WpfAdmin
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
-
+            isSave = true;
+            product.ProductName = productName.Text;
+            product.ProductWeight = Convert.ToDouble(productWeight.Text);
+            product.UpcCode = productUps.Text;
+            this.Hide();
         }
     }
 }
