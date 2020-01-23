@@ -34,6 +34,7 @@ namespace Pricero.WpfAdmin
             TabItems = new ObservableCollection<TabItem>
             {
                 new TabItem{Content = new UsersListUserControl(), Header = "Users"},
+                new TabItem{Content = new ProductListUserControl(), Header = "Products"},
                 new TabItem{Content = new NotImplementedUserControl(), Header = "Prices"}
             };
 

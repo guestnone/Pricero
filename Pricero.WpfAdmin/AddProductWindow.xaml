@@ -5,10 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pricero.WpfAdmin"
         mc:Ignorable="d"
-        Title="AddProductWindow" Height="450" Width="800">
+        Title="AddProductWindow" Height="280" Width="305">
     <Grid>
-        <Button x:Name="buttonOK" Content="OK" HorizontalAlignment="Left" Margin="246,149,0,0" VerticalAlignment="Top" Click="buttonOK_Click"/>
-        <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Left" Margin="191,149,0,0" VerticalAlignment="Top" Click="buttonCancel_Click"/>
+        <Button x:Name="buttonOK" Content="OK" HorizontalAlignment="Left" Margin="201,212,0,0" VerticalAlignment="Top" Click="buttonOK_Click" RenderTransformOrigin="0.487,0.544" Width="45"/>
+        <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Left" Margin="62,212,0,0" VerticalAlignment="Top" Click="buttonCancel_Click" Width="44"/>
+        <Label Content="Product name" HorizontalAlignment="Left" Margin="16,48,0,0" VerticalAlignment="Top"/>
+        <Label Content="Product weight" HorizontalAlignment="Left" Margin="16,95,0,0" VerticalAlignment="Top"/>
+        <Label Content="UPC code" HorizontalAlignment="Left" Margin="16,142,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="productName" HorizontalAlignment="Left" Margin="135,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Height="22"/>
+        <TextBox x:Name="productWeight" HorizontalAlignment="Left" Margin="135,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Height="22"/>
+        <TextBox x:Name="productUps" HorizontalAlignment="Left" Margin="135,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Height="26"/>
 
     </Grid>
 </Window>
