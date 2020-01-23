@@ -12,7 +12,7 @@ namespace Pricero.Core.Db
         public string Nickname { get; set; }
         public string Email { get; set; }
         public string PasswordSalt { get; set; }
-        public string PasswordInitValue { get; set; }
+        public string PasswordHash { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserType { get; set; }

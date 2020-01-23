@@ -33,7 +33,7 @@ namespace Pricero.WpfAdmin
             InitializeComponent();
             TabItems = new ObservableCollection<TabItem>
             {
-                new TabItem{Content = new NotImplementedUserControl(), Header = "Users"},
+                new TabItem{Content = new UsersListUserControl(), Header = "Users"},
                 new TabItem{Content = new NotImplementedUserControl(), Header = "Prices"}
             };
 
