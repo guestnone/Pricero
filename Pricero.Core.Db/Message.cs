@@ -14,7 +14,8 @@ namespace Pricero.Core.Db
         public string MessageContent { get; set; }
         public DateTime MessageDate { get; set; }
 
-        public virtual User MessageSender { get; set; }
-        public virtual User MessageReceiver { get; set; }
+        // TODO: Adrian, can you fix it?
+        //public User MessageSender { get; set; }
+        //public User MessageReceiver { get; set; }
     }
 }
