@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore;
+using Pricero.Core.Db;
 
 namespace Pricero.WpfAdmin
 {
@@ -22,6 +24,9 @@ namespace Pricero.WpfAdmin
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        PriceroDBContext dbContext = new PriceroDBContext();
+
         public ObservableCollection<TabItem> TabItems { get; set; }
 
         public static RoutedUICommand ExitCommand = new RoutedUICommand("Exit",
@@ -31,9 +36,10 @@ namespace Pricero.WpfAdmin
         public MainWindow()
         {
             InitializeComponent();
+            dbContext.Users.Load();
             TabItems = new ObservableCollection<TabItem>
             {
-                new TabItem{Content = new UsersListUserControl(), Header = "Users"},
+                new TabItem{Content = new UsersListUserControl(dbContext), Header = "Users"},
                 new TabItem{Content = new ProductListUserControl(), Header = "Products"},
                 new TabItem{Content = new NotImplementedUserControl(), Header = "Prices"}
             };
@@ -57,7 +63,9 @@ namespace Pricero.WpfAdmin
                     MessageBoxImage.Information) == MessageBoxResult.No)
             {
                 e.Cancel = true;
+                return;
             }
+            dbContext.Dispose();
         }
 
     }

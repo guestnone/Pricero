@@ -9,8 +9,13 @@ namespace Pricero.Core.Db
 {
     public class PriceroDBContext : DbContext
     {
+        private static bool _created = false;
         public PriceroDBContext() : base() {
-
+            if (!_created)
+            {
+                _created = true;
+                Database.Migrate();
+            }
         }
         
         public DbSet<Shop> Shops { get; set; }
