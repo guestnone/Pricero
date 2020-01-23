@@ -5,6 +5,7 @@ namespace Pricero.Core.Db
 {
     public class Shop
     {
+        [Key]
         public int ShopId { get; set; }
         public string Street { get; set; }
         public string Number { get; set; }

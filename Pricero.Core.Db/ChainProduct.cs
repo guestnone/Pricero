@@ -13,6 +13,7 @@ namespace Pricero.Core.Db
 
         public virtual Chain Chain { get; set; }
         public virtual Discount Discount { get; set; }
+        public int DiscountId { get; set; }
         public virtual Product Product { get; set; }
         public virtual ICollection<PriceReport> PriceReports { get; set; }
     }
