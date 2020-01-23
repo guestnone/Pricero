@@ -28,7 +28,7 @@ namespace Pricero.Core.Db
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            dbContext.Dispose();
         }
         #endregion
         public UnitOfWork()
