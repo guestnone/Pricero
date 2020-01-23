@@ -1,7 +1,6 @@
 ﻿using Pricero.Core.Db;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,25 +10,22 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Linq;
 
 namespace Pricero.WpfAdmin
 {
     /// <summary>
     /// Interaction logic for AddProductWindow.xaml
     /// </summary>
-    public partial class AddProductWindow : Window
+    public partial class UpdateProductWindow : Window
     {
         public bool isSave = false;
-        public Product product = new Product();
+        public int Id;
 
-        public AddProductWindow()
+        public UpdateProductWindow(int id)
         {
+            Id = id;
             InitializeComponent();
-            using (PriceroDBContext db = new PriceroDBContext())
-            {
-                groupComboBox.ItemsSource = db.ProductGroups.ToList();
-                producerComboBox.ItemsSource = db.Producers.ToList();
-            }
         }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
@@ -39,24 +35,25 @@ namespace Pricero.WpfAdmin
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
-            if (groupComboBox.SelectedItem != null || producerComboBox.SelectedItem != null) {
+            if (groupComboBox.SelectedItem != null || producerComboBox.SelectedItem != null)
+            {
                 return;
             }
-
             isSave = true;
-            product.ProductName = productName.Text;
-            product.ProductWeight = Convert.ToDouble(productWeight.Text);
-            product.UpcCode = productUps.Text;
-            product.ProductGroup = (groupComboBox.SelectedItem as ProductGroup);
-            product.Producer = (producerComboBox.SelectedItem as Producer);
-
             using (PriceroDBContext db = new PriceroDBContext())
             {
-                db.Products.Add(product);
+                Product productDb = (from p in db.Products
+                                     where p.ProductID == Id
+                                     select p).Single();
+                productDb.ProductName = productName.Text;
+                productDb.ProductWeight = Convert.ToDouble(productWeight.Text);
+                productDb.UpcCode = productUps.Text;
                 db.SaveChanges();
                 ProductListUserControl.dataGrid.ItemsSource = db.Products.ToList();
             }
-            this.Close();
+            
+            
+            this.Hide();
         }
     }
 }

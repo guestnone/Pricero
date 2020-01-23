@@ -41,6 +41,8 @@ namespace Pricero.WpfAdmin
             User.PasswordSalt = BCrypt.Net.BCrypt.GenerateSalt();
             User.PasswordHash = BCrypt.Net.BCrypt.HashPassword(passwordBox.Password, User.PasswordSalt);
             User.UserType = textBoxUserType.Text;
+
+            
             
             this.Hide();
         }

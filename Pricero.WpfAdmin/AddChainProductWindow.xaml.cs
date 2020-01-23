@@ -35,6 +35,8 @@ namespace Pricero.WpfAdmin
 
             ChainProduct.Price = Convert.ToDouble(textBox.Text);
 
+            
+
             this.Hide();
         }
     }
