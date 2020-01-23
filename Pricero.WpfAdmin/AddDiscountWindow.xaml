@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pricero.WpfAdmin"
         mc:Ignorable="d"
-        Title="AddDiscountWindow" Height="450" Width="800">
+        Title="AddDiscountWindow" Height="191" Width="296" ResizeMode="NoResize">
     <Grid>
-        
+        <Button x:Name="buttonOK" Content="OK" HorizontalAlignment="Left" Margin="246,119,0,0" VerticalAlignment="Top" Click="buttonOK_Click"/>
+        <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Left" Margin="191,119,0,0" VerticalAlignment="Top" Click="buttonCancel_Click"/>
+        <Label x:Name="label" Content="Discount Price" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.209,0.189"/>
+        <DatePicker x:Name="dpFrom"  HorizontalAlignment="Left" Margin="109,39,0,0" VerticalAlignment="Top" Width="157"/>
+        <Label x:Name="label1" Content="From" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="To" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dpTo"  HorizontalAlignment="Left" Margin="109,74,0,0" VerticalAlignment="Top" Width="157"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="110,14,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="156"/>
+
     </Grid>
 </Window>

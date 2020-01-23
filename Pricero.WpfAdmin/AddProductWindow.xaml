@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="AddProductWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="buttonOK" Content="OK" HorizontalAlignment="Left" Margin="246,149,0,0" VerticalAlignment="Top" Click="buttonOK_Click"/>
+        <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Left" Margin="191,149,0,0" VerticalAlignment="Top" Click="buttonCancel_Click"/>
+
     </Grid>
 </Window>

@@ -21,5 +21,15 @@ namespace Pricero.WpfAdmin
         {
             InitializeComponent();
         }
+
+        private void buttonCancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttonOK_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
