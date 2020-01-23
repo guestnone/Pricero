@@ -42,6 +42,17 @@ namespace Pricero.Core.Db
                 .HasKey(c => new { c.ProductID, c.UserID});
             modelBuilder.Entity<FavouriteShop>()
                 .HasKey(c => new { c.ShopID, c.UserID });
+            modelBuilder.Entity<Message>()
+                    .HasOne(m => m.MessageReceiver)
+                    .WithMany(t => t.ReceivedMessages)
+                    .HasForeignKey(m => m.MessageReceiverId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Message>()
+                        .HasOne(m => m.MessageSender)
+                        .WithMany(t => t.SentMessages)
+                        .HasForeignKey(m => m.MessageSenderId)
+                        .OnDelete(DeleteBehavior.Cascade);
         }
 
 
