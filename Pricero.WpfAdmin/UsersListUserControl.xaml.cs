@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pricero.Core.Db;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,17 +19,26 @@ namespace Pricero.WpfAdmin
     /// </summary>
     public partial class UsersListUserControl : UserControl
     {
+        public static DataGrid dataGrid;
+
         public UsersListUserControl()
         {
             InitializeComponent();
+            dataGrid = userDataGrid;
         }
 
-        private void addButton_Click(object sender, RoutedEventArgs e)
+        public void addButton_Click(object sender, RoutedEventArgs e)
         {
             var window = new AddUserWindow();
             window.ShowDialog();
-            
-            // TODO: Add db add
+        }
+
+        public void updateProduct_Click(object sender, RoutedEventArgs e)
+        {
+            int id = (userDataGrid.SelectedItem as User).UserId;
+            var window = new UpdateProductWindow(id);
+            window.ShowDialog();
         }
     }
+
 }
