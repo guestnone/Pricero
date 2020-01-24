@@ -35,8 +35,9 @@ namespace Pricero.WpfAdmin
             {
                 new TabItem{Content = new UsersListUserControl(), Header = "Users"},
                 new TabItem{Content = new ProductListUserControl(), Header = "Products"},
-                new TabItem{Content = new NotImplementedUserControl(), Header = "Prices"},
-                new TabItem{Content = new ShopListUserControl(), Header = "Shops"}
+                new TabItem{Content = new PricesListUserControl(), Header = "Prices"},
+                new TabItem{Content = new ShopListUserControl(), Header = "Shops"},
+                new TabItem{Content = new SectionListUserControl(), Header = "Forum"}
             };
 
             TabControl.ItemsSource = TabItems;
