@@ -44,7 +44,7 @@ namespace Pricero.WpfAdmin
             {
                 db.Users.Remove(db.Users.Where(m => m.UserId == id).Single());
                 db.SaveChanges();
-                grid.ItemsSource = db.Products.ToList();
+                grid.ItemsSource = db.Users.ToList();
             }
 
         }

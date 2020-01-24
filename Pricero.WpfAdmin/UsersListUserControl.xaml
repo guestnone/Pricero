@@ -13,7 +13,7 @@
                 <DataGridTextColumn Header="Nick" Binding="{Binding Nickname}" />
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
                 <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
-                <DataGridTextColumn Header="Last Name" Binding="{Binding Lastname}" />
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
                 <DataGridTextColumn Header="User Type" Binding="{Binding UserType}" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.HeaderTemplate>

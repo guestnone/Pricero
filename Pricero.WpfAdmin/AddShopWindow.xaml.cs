@@ -26,7 +26,7 @@ namespace Pricero.WpfAdmin
             InitializeComponent();
             using (PriceroDBContext db = new PriceroDBContext())
             {
-                chainComboBox.ItemsSource = db.Shops.ToList();
+                chainComboBox.ItemsSource = db.Chains.ToList();
             }
             chainComboBox.DisplayMemberPath = "ChainName";
         }
