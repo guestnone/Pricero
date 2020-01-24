@@ -26,6 +26,13 @@ namespace Pricero.WpfAdmin
         {
             Id = id;
             InitializeComponent();
+            using (PriceroDBContext db = new PriceroDBContext())
+            {
+                groupComboBox.ItemsSource = db.ProductGroups.ToList();
+                producerComboBox.ItemsSource = db.Producers.ToList();
+            }
+            groupComboBox.DisplayMemberPath = "ProductGroupId";
+            producerComboBox.DisplayMemberPath = "ProducerName";
         }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
@@ -35,7 +42,7 @@ namespace Pricero.WpfAdmin
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
-            if (groupComboBox.SelectedItem != null || producerComboBox.SelectedItem != null)
+            if (groupComboBox.SelectedItem == null || producerComboBox.SelectedItem == null)
             {
                 return;
             }

@@ -7,27 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        
+
         <Button x:Name="addButton" Content="Add Product" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="0.53,0.518" Margin="0,4,0,0" Click="addButton_Click"/>
-        
+
         <DataGrid x:Name="productDataGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" Margin="128,118,128,47" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding ProductName}" />
                 <DataGridTextColumn Header="Weight" Binding="{Binding ProductWeight}" />
                 <DataGridTextColumn Header="UPC" Binding="{Binding UpcCode}" />
-                <DataGridTextColumn Header="Price" Binding="{Binding Price}" />
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.HeaderTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="Group" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.HeaderTemplate>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ComboBox Name="groupComboBox" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Group" Binding="{Binding ProductGroup.ProductGroupID}" />
+                <DataGridTextColumn Header="Producer" Binding="{Binding Producer.ProducerName}" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.HeaderTemplate>
                         <DataTemplate>
@@ -37,7 +26,6 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button x:Name="updateBtn" Content="Update" Click="updateProduct_Click" />
                                 <Button x:Name="deleteBtn" Content="Delete" Click="deleteProduct_Click"  />
                             </StackPanel>
                         </DataTemplate>
@@ -45,7 +33,9 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        
+        <Button Content="Add Producer" Click="addProducer_Click" HorizontalAlignment="Left" Margin="269,4,0,0" VerticalAlignment="Top" Width="86"/>
+        <Button Content="Add Product Group" Click="addProductGroup_Click" HorizontalAlignment="Left" Margin="377,4,0,0" VerticalAlignment="Top" Width="127"/>
+
 
     </Grid>
 </UserControl>

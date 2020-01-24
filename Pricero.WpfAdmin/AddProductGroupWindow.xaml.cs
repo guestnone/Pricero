@@ -16,10 +16,10 @@ namespace Pricero.WpfAdmin
     /// <summary>
     /// Interaction logic for AddProducerWindow.xaml
     /// </summary>
-    public partial class AddProducerWindow : Window
+    public partial class AddProductGroupWindow : Window
     {
-        public Producer producer = new Producer();
-        public AddProducerWindow()
+        public ProductGroup productGroup = new ProductGroup();
+        public AddProductGroupWindow()
         {
             InitializeComponent();
         }
@@ -31,15 +31,14 @@ namespace Pricero.WpfAdmin
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
-            
-            producer.ProducerName = producerName.Text;
-            producer.ProducerCountry = producerCountry.Text;
-            producer.ProducerNIP = producerNIP.Text;
+
+            productGroup.ProductGroupID = productGroupId.Text;
+            productGroup.BaseVATCharge = Convert.ToDouble(baseVatCharge.Text);
             
 
             using (PriceroDBContext db = new PriceroDBContext())
             {
-                db.Producers.Add(producer);
+                db.ProductGroups.Add(productGroup);
                 db.SaveChanges();
                 
             }

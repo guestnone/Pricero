@@ -48,7 +48,17 @@ namespace Pricero.WpfAdmin
                 db.SaveChanges();
                 productDataGrid.ItemsSource = db.Products.ToList();
             }
-                var window = new AddProductWindow();
+            
+        }
+
+        private void addProducer_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new AddProducerWindow();
+            window.ShowDialog();
+        }
+        private void addProductGroup_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new AddProductGroupWindow();
             window.ShowDialog();
         }
     }

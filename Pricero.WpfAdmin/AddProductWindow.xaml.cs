@@ -19,7 +19,6 @@ namespace Pricero.WpfAdmin
     /// </summary>
     public partial class AddProductWindow : Window
     {
-        public bool isSave = false;
         public Product product = new Product();
 
         public AddProductWindow()
@@ -30,6 +29,8 @@ namespace Pricero.WpfAdmin
                 groupComboBox.ItemsSource = db.ProductGroups.ToList();
                 producerComboBox.ItemsSource = db.Producers.ToList();
             }
+            groupComboBox.DisplayMemberPath = "ProductGroupID";
+            producerComboBox.DisplayMemberPath = "ProducerName";
         }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
@@ -39,19 +40,18 @@ namespace Pricero.WpfAdmin
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
-            if (groupComboBox.SelectedItem != null || producerComboBox.SelectedItem != null) {
-                return;
-            }
+            
 
-            isSave = true;
             product.ProductName = productName.Text;
             product.ProductWeight = Convert.ToDouble(productWeight.Text);
             product.UpcCode = productUps.Text;
-            product.ProductGroup = (groupComboBox.SelectedItem as ProductGroup);
-            product.Producer = (producerComboBox.SelectedItem as Producer);
+            string groupId = (groupComboBox.SelectedItem as ProductGroup).ProductGroupID;
+            int producerId = (producerComboBox.SelectedItem as Producer).ProducerID;
 
             using (PriceroDBContext db = new PriceroDBContext())
             {
+                product.Producer = db.Producers.Where(m => m.ProducerID == producerId).Single();
+                product.ProductGroup = db.ProductGroups.Where(m => m.ProductGroupID == groupId).Single();
                 db.Products.Add(product);
                 db.SaveChanges();
                 ProductListUserControl.dataGrid.ItemsSource = db.Products.ToList();
