@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore;
 using Pricero.Core.Db;
 
 namespace Pricero.WpfAdmin
@@ -53,7 +54,7 @@ namespace Pricero.WpfAdmin
                 chainProduct.Discount = new Discount();
                 db.ChainProducts.Add(chainProduct);
                 db.SaveChanges();
-                PricesListUserControl.dataGrid.ItemsSource = db.ChainProducts.ToList();
+                PricesListUserControl.dataGrid.ItemsSource = db.ChainProducts.Include("Product").Include("Chain").Include("Discount").ToList();
             }
 
             this.Hide();

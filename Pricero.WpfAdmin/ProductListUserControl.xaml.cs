@@ -1,4 +1,5 @@
-﻿using Pricero.Core.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using Pricero.Core.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Pricero.WpfAdmin
             dataGrid = productDataGrid;
             using (PriceroDBContext db = new PriceroDBContext())
             {
-                productDataGrid.ItemsSource = db.Products.ToList();
+                ProductListUserControl.dataGrid.ItemsSource = db.Products.Include("Producer").Include("ProductGroup").ToList();
             }
         }
         
@@ -50,7 +51,7 @@ namespace Pricero.WpfAdmin
             using (PriceroDBContext db = new PriceroDBContext()) {
                 db.Products.Remove(db.Products.Where(m => m.ProductID == id).Single());
                 db.SaveChanges();
-                productDataGrid.ItemsSource = db.Products.ToList();
+                ProductListUserControl.dataGrid.ItemsSource = db.Products.Include("Producer").Include("ProductGroup").ToList();
             }
             
         }

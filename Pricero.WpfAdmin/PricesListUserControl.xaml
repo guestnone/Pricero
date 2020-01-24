@@ -13,9 +13,9 @@
                 <DataGridTextColumn Header="Name" Binding="{Binding Product.ProductName}" />
                 <DataGridTextColumn Header="Chain" Binding="{Binding Chain.ChainName}" />
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}" />
-                <DataGridTextColumn Header="Discount" Binding="{Binding Dicount.DicountPrice}" />
-                <DataGridTextColumn Header="From" Binding="{Binding Dicount.DicountFrom}" />
-                <DataGridTextColumn Header="To" Binding="{Binding Dicount.DicountTo}" />
+                <DataGridTextColumn Header="Discount" Binding="{Binding Discount.DiscountPrice}" />
+                <DataGridTextColumn Header="From" Binding="{Binding Discount.DiscountFrom}" />
+                <DataGridTextColumn Header="To" Binding="{Binding Discount.DiscountTo}" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.HeaderTemplate>
                         <DataTemplate>

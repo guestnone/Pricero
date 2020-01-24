@@ -1,4 +1,5 @@
-﻿using Pricero.Core.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using Pricero.Core.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +52,7 @@ namespace Pricero.WpfAdmin
                 userPost.Thread = db.ForumThreads.Where(m => m.ThreadID == Id).Single();
                 db.UserPosts.Add(userPost);
                 db.SaveChanges();
-                UserPostListWindow.dataGrid.ItemsSource = db.UserPosts.Where(m => m.Thread.ThreadID == Id).ToList();
+                UserPostListWindow.dataGrid.ItemsSource = db.UserPosts.Where(m => m.Thread.ThreadID == Id).Include("User").ToList();
             }
             this.Close();
         }
