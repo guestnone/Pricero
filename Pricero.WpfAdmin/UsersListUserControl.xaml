@@ -7,8 +7,32 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <DataGrid x:Name="dataGrid" Margin="0,33,0,0" AutoGenerateColumns="True"/>
-        <Button x:Name="addButton" Content="Add" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="0.53,0.518" Margin="0,4,0,0" Click="addButton_Click"/>
+        <Button x:Name="addButton" Content="Add Product" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="0.53,0.518" Margin="0,4,0,0" Click="addButton_Click"/>
+        <DataGrid x:Name="userDataGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" Margin="128,118,128,47" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="Nickname" Binding="{Binding Nickname}" />
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                <DataGridTextColumn Header="UserType" Binding="{Binding UserType}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Action" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="updateBtn" Content="Update" Click="updateUser_Click" />
+                                <Button x:Name="deleteBtn" Content="Delete" Click="deleteUser_Click"  />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+          
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </UserControl>
