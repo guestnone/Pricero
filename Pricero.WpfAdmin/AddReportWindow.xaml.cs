@@ -17,12 +17,12 @@ namespace Pricero.WpfAdmin
     /// <summary>
     /// Interaction logic for AddDiscountWindow.xaml
     /// </summary>
-    public partial class AddDiscountWindow : Window
+    public partial class AddReportWindow : Window
     {
-        public Discount discount = new Discount();
+        public PriceReport priceReport = new PriceReport();
         private int Id;
 
-        public AddDiscountWindow(int id)
+        public AddReportWindow(int id)
         {
             InitializeComponent();
             Id = id;
@@ -35,16 +35,14 @@ namespace Pricero.WpfAdmin
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
-            discount.DiscountPrice = Convert.ToDouble(textBox.Text);
-            discount.DiscountFrom = (DateTime)dpFrom.SelectedDate;
-            discount.DiscountTo = (DateTime)dpTo.SelectedDate;
+            priceReport.ReportContent = report.Text;
+            
             using (PriceroDBContext db = new PriceroDBContext())
             {
                 ChainProduct product = db.ChainProducts.Where(m => m.ChainProductID == Id).Single();
-                discount.ChainProduct = product;
-                db.Discounts.Add(discount);
+                priceReport.ChainProduct = product;
+                db.PriceReports.Add(priceReport);
                 db.SaveChanges();
-                PricesListUserControl.dataGrid.ItemsSource = db.ChainProducts.ToList();
             }
             this.Close();
         }

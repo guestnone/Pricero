@@ -9,12 +9,10 @@
     <Grid>
         <Button x:Name="buttonOK" Content="OK" HorizontalAlignment="Left" Margin="256,113,0,0" VerticalAlignment="Top" Click="buttonOK_Click"/>
         <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Left" Margin="201,113,0,0" VerticalAlignment="Top" Click="buttonCancel_Click"/>
-        <Label x:Name="label" Content="Date of Creation" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Title" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="Section" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="User" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="126,45,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <DatePicker x:Name="dp" HorizontalAlignment="Left" Margin="126,12,0,0" VerticalAlignment="Top" Width="150"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="126,69,0,0" VerticalAlignment="Top" Width="150"/>
+        <ComboBox x:Name="userComboBox" HorizontalAlignment="Left" Margin="126,69,0,0" VerticalAlignment="Top" Width="150"/>
 
     </Grid>
 </Window>

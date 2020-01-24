@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pricero.WpfAdmin"
         mc:Ignorable="d"
-        Title="AddForumPageWindow" Height="450" Width="800">
+        Title="AddForumPageWindow" Height="194" Width="312" ResizeMode="NoResize">
     <Grid>
-        <Button x:Name="buttonOK" Content="OK" HorizontalAlignment="Left" Margin="246,149,0,0" VerticalAlignment="Top" Click="buttonOK_Click"/>
-        <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Left" Margin="191,149,0,0" VerticalAlignment="Top" Click="buttonCancel_Click"/>
+        <Button x:Name="buttonOK" Content="OK" HorizontalAlignment="Left" Margin="256,113,0,0" VerticalAlignment="Top" Click="buttonOK_Click"/>
+        <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Left" Margin="201,113,0,0" VerticalAlignment="Top" Click="buttonCancel_Click"/>
+        <Label x:Name="label1" Content="Content" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="User" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="126,45,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <ComboBox x:Name="userComboBox" HorizontalAlignment="Left" Margin="126,69,0,0" VerticalAlignment="Top" Width="150"/>
 
     </Grid>
 </Window>

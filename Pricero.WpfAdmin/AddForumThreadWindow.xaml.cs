@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,11 +19,12 @@ namespace Pricero.WpfAdmin
     /// </summary>
     public partial class AddForumThreadWindow : Window
     {
-        public bool Added = false;
         public ForumThread forumThread = new ForumThread();
-        public AddForumThreadWindow()
+        public int Id;
+        public AddForumThreadWindow(int id)
         {
             InitializeComponent();
+            Id = id;
         }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
@@ -32,11 +34,17 @@ namespace Pricero.WpfAdmin
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
-            Added = true;
             forumThread.ThreadTitle = textBox.Text;
-            forumThread.ThreadDate = (DateTime)dp.SelectedDate;
+            forumThread.ThreadDate = DateTime.Now;
 
-            this.Hide();
+            using (PriceroDBContext db = new PriceroDBContext())
+            {
+                forumThread.Section = db.Sections.Where(m => m.SectionID == Id).Single();
+                db.ForumThreads.Add(forumThread);
+                db.SaveChanges();
+                ThreadListWindow.dataGrid.ItemsSource = db.ForumThreads.Where(m => m.Section.SectionID == Id).ToList();
+            }
+            this.Close();
         }
     }
 }

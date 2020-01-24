@@ -12,44 +12,48 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Section = Pricero.Core.Db.Section;
 
 namespace Pricero.WpfAdmin
 {
     /// <summary>
-    /// Interaction logic for ShopListUserControl.xaml
+    /// Interaction logic for UsersListUserControl.xaml
     /// </summary>
-    public partial class ShopListUserControl : UserControl
+    public partial class SectionListUserControl : UserControl
     {
         public static DataGrid dataGrid;
-        public ShopListUserControl()
+        public SectionListUserControl()
         {
             InitializeComponent();
             dataGrid = grid;
             using (PriceroDBContext db = new PriceroDBContext())
             {
-                grid.ItemsSource = db.Users.ToList();
+                grid.ItemsSource = db.Sections.ToList();
             }
         }
+
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            var window = new AddShopWindow();
+            var window = new AddForumSectionWindow();
             window.ShowDialog();
         }
+
         public void deleteProduct_Click(object sender, RoutedEventArgs e)
         {
-            int id = (grid.SelectedItem as Shop).ShopId;
+            int id = (grid.SelectedItem as Section).SectionID;
             using (PriceroDBContext db = new PriceroDBContext())
             {
-                db.Shops.Remove(db.Shops.Where(m => m.ShopId == id).Single());
+                db.Sections.Remove(db.Sections.Where(m => m.SectionID == id).Single());
                 db.SaveChanges();
-                grid.ItemsSource = db.Shops.ToList();
+                grid.ItemsSource = db.Sections.ToList();
             }
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void openBtn_Click(object sender, RoutedEventArgs e)
         {
-            var window = new AddChainWindow();
+            int id = (grid.SelectedItem as Section).SectionID;
+            var window = new ThreadListWindow(id);
             window.ShowDialog();
         }
     }

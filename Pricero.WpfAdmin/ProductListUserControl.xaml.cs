@@ -25,6 +25,10 @@ namespace Pricero.WpfAdmin
         {
             InitializeComponent();
             dataGrid = productDataGrid;
+            using (PriceroDBContext db = new PriceroDBContext())
+            {
+                productDataGrid.ItemsSource = db.Products.ToList();
+            }
         }
         
         public void addButton_Click(object sender, RoutedEventArgs e)

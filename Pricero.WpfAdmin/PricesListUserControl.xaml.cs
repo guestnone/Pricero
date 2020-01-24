@@ -16,40 +16,50 @@ using System.Windows.Shapes;
 namespace Pricero.WpfAdmin
 {
     /// <summary>
-    /// Interaction logic for ShopListUserControl.xaml
+    /// Interaction logic for UsersListUserControl.xaml
     /// </summary>
-    public partial class ShopListUserControl : UserControl
+    public partial class PricesListUserControl : UserControl
     {
         public static DataGrid dataGrid;
-        public ShopListUserControl()
+        public PricesListUserControl()
         {
             InitializeComponent();
             dataGrid = grid;
             using (PriceroDBContext db = new PriceroDBContext())
             {
-                grid.ItemsSource = db.Users.ToList();
+                grid.ItemsSource = db.ChainProducts.ToList();
             }
         }
+
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            var window = new AddShopWindow();
+            var window = new AddChainProductWindow();
             window.ShowDialog();
         }
+
         public void deleteProduct_Click(object sender, RoutedEventArgs e)
         {
-            int id = (grid.SelectedItem as Shop).ShopId;
+            int id = (grid.SelectedItem as ChainProduct).ChainProductID;
             using (PriceroDBContext db = new PriceroDBContext())
             {
-                db.Shops.Remove(db.Shops.Where(m => m.ShopId == id).Single());
+                db.ChainProducts.Remove(db.ChainProducts.Where(m => m.ChainProductID == id).Single());
                 db.SaveChanges();
-                grid.ItemsSource = db.Shops.ToList();
+                grid.ItemsSource = db.ChainProducts.ToList();
             }
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void discountBtn_Click(object sender, RoutedEventArgs e)
         {
-            var window = new AddChainWindow();
+            int id = (grid.SelectedItem as ChainProduct).ChainProductID;
+            var window = new AddDiscountWindow(id);
+            window.ShowDialog();
+        }
+
+        private void reportBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int id = (grid.SelectedItem as ChainProduct).ChainProductID;
+            var window = new AddReportWindow(id);
             window.ShowDialog();
         }
     }

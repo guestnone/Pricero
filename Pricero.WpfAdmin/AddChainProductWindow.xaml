@@ -7,12 +7,10 @@
         mc:Ignorable="d"
         Title="AddChainProductWindow" Height="219" Width="319" ResizeMode="NoResize">
     <Grid>
-        <ComboBox x:Name="comboBoxChain" HorizontalAlignment="Left" Margin="91,14,0,0" VerticalAlignment="Top" Width="175"/>
-        <Label x:Name="label" Content="Chain" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.024,0.228"/>
-        <Label x:Name="label1" Content="Discount" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxChain" HorizontalAlignment="Left" Margin="91,39,0,0" VerticalAlignment="Top" Width="175"/>
+        <Label x:Name="label" Content="Chain" HorizontalAlignment="Left" Margin="12,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.024,0.228"/>
         <Label x:Name="label2" Content="Product" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label3" Content="Base Price" HorizontalAlignment="Left" Margin="12,103,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBoxDiscount" HorizontalAlignment="Left" Margin="91,45,0,0" VerticalAlignment="Top" Width="175"/>
         <ComboBox x:Name="comboBoxProduct" HorizontalAlignment="Left" Margin="91,74,0,0" VerticalAlignment="Top" Width="175"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="91,107,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="175"/>
         <Button x:Name="buttonOK" Content="OK" HorizontalAlignment="Left" Margin="246,149,0,0" VerticalAlignment="Top" Click="buttonOK_Click"/>

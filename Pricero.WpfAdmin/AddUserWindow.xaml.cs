@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Pricero.Core.Db;
 using BCrypt.Net;
+using System.Linq;
+
 namespace Pricero.WpfAdmin
 {
     /// <summary>
@@ -42,9 +44,15 @@ namespace Pricero.WpfAdmin
             User.PasswordHash = BCrypt.Net.BCrypt.HashPassword(passwordBox.Password, User.PasswordSalt);
             User.UserType = textBoxUserType.Text;
 
-            
-            
-            this.Hide();
+            using (PriceroDBContext db = new PriceroDBContext())
+            {
+                
+                db.Users.Add(User);
+                db.SaveChanges();
+                UsersListUserControl.dataGrid.ItemsSource = db.Users.ToList();
+            }
+
+            this.Close();
         }
     }
 }

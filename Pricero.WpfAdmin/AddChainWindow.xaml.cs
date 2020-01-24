@@ -18,7 +18,6 @@ namespace Pricero.WpfAdmin
     /// </summary>
     public partial class AddChainWindow : Window
     {
-        public bool Added = false;
         public Chain chain = new Chain();
         public AddChainWindow()
         {
@@ -33,9 +32,13 @@ namespace Pricero.WpfAdmin
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
-            Added = true;
             chain.ChainName = textBox.Text;
-            this.Hide();
+            using (PriceroDBContext db = new PriceroDBContext())
+            {
+                db.Chains.Add(chain);
+                db.SaveChanges();
+            }
+            this.Close();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,10 +20,17 @@ namespace Pricero.WpfAdmin
     public partial class AddChainProductWindow : Window
     {
         public bool IsCreate = false;
-        public ChainProduct ChainProduct = new ChainProduct(); 
+        public ChainProduct chainProduct = new ChainProduct(); 
         public AddChainProductWindow()
         {
             InitializeComponent();
+            using (PriceroDBContext db = new PriceroDBContext())
+            {
+                comboBoxChain.ItemsSource = db.Chains.ToList();
+                comboBoxProduct.ItemsSource = db.Products.ToList();
+            }
+            comboBoxChain.DisplayMemberPath = "ChainName";
+            comboBoxProduct.DisplayMemberPath = "ProductName";
         }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
@@ -33,9 +41,19 @@ namespace Pricero.WpfAdmin
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
 
-            ChainProduct.Price = Convert.ToDouble(textBox.Text);
+            chainProduct.Price = Convert.ToDouble(textBox.Text);
 
-            
+            int productId = (comboBoxProduct.SelectedItem as Product).ProductID;
+            int chainId = (comboBoxChain.SelectedItem as Chain).ChainId;
+
+            using (PriceroDBContext db = new PriceroDBContext())
+            {
+                chainProduct.Product = db.Products.Where(m => m.ProductID == productId).Single();
+                chainProduct.Chain = db.Chains.Where(m => m.ChainId == chainId).Single();
+                db.ChainProducts.Add(chainProduct);
+                db.SaveChanges();
+                PricesListUserControl.dataGrid.ItemsSource = db.ChainProducts.ToList();
+            }
 
             this.Hide();
         }

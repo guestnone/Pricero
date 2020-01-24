@@ -1,6 +1,7 @@
 ﻿using Pricero.Core.Db;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,12 +19,16 @@ namespace Pricero.WpfAdmin
     /// </summary>
     public partial class AddShopWindow : Window
     {
-        public bool isSave = false;
         public Shop shop = new Shop();
 
         public AddShopWindow()
         {
             InitializeComponent();
+            using (PriceroDBContext db = new PriceroDBContext())
+            {
+                chainComboBox.ItemsSource = db.Shops.ToList();
+            }
+            chainComboBox.DisplayMemberPath = "ChainName";
         }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
@@ -33,13 +38,20 @@ namespace Pricero.WpfAdmin
 
         private void buttonOk_Click(object sender, RoutedEventArgs e)
         {
-            isSave = true;
             shop.Street = textBoxStreet.Text;
             shop.Number = textBoxNumber.Text;
             shop.PostalCode = textBoxPCode.Text;
             shop.City = textBoxCity.Text;
             shop.Country = textBoxCountry.Text;
-            this.Hide();
+            int chainId = (chainComboBox.SelectedItem as Chain).ChainId;
+            using (PriceroDBContext db = new PriceroDBContext())
+            {
+                shop.Chain = db.Chains.Where(m => m.ChainId == chainId).Single();
+                db.Shops.Add(shop);
+                db.SaveChanges();
+                ShopListUserControl.dataGrid.ItemsSource = db.Shops.ToList();
+            }
+            this.Close();
         }
     }
 }

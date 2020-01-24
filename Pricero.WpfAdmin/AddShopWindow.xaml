@@ -18,7 +18,7 @@
         <TextBox x:Name="textBoxCity" HorizontalAlignment="Left" Margin="131,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151"/>
         <TextBox x:Name="textBoxCountry" HorizontalAlignment="Left" Margin="131,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151"/>
         <Label Content="Chain" HorizontalAlignment="Left" Margin="25,165,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="131,169,0,0" VerticalAlignment="Top" Width="151"/>
+        <ComboBox x:Name="chainComboBox" HorizontalAlignment="Left" Margin="131,169,0,0" VerticalAlignment="Top" Width="151"/>
         <Button x:Name="buttonOk" Content="OK" HorizontalAlignment="Left" Margin="228,212,0,0" VerticalAlignment="Top" Click="buttonOk_Click" Width="40"/>
         <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Left" Margin="90,212,0,0" VerticalAlignment="Top" Click="buttonCancel_Click" Width="47"/>
     </Grid>
