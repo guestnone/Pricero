@@ -10,9 +10,9 @@
         <Button x:Name="addButton" Content="Add" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="0.53,0.518" Margin="0,4,0,0" Click="addButton_Click"/>
         <DataGrid x:Name="grid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" Margin="128,118,128,47" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding ThreadTitle}" />
+                <DataGridTextColumn Header="Name" Binding="{Binding PostContent}" />
                 <DataGridTextColumn Header="User" Binding="{Binding User.Nickname}" />
-                <DataGridTextColumn Header="Creation Date" Binding="{Binding ThreadDate}" />
+                <DataGridTextColumn Header="Creation Date" Binding="{Binding PostDate}" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.HeaderTemplate>
                         <DataTemplate>

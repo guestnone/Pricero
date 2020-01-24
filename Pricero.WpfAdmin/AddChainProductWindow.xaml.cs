@@ -50,6 +50,7 @@ namespace Pricero.WpfAdmin
             {
                 chainProduct.Product = db.Products.Where(m => m.ProductID == productId).Single();
                 chainProduct.Chain = db.Chains.Where(m => m.ChainId == chainId).Single();
+                chainProduct.Discount = new Discount();
                 db.ChainProducts.Add(chainProduct);
                 db.SaveChanges();
                 PricesListUserControl.dataGrid.ItemsSource = db.ChainProducts.ToList();

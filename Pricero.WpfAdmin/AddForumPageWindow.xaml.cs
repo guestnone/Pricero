@@ -41,12 +41,14 @@ namespace Pricero.WpfAdmin
         {
             userPost.PostContent = textBox.Text;
             userPost.PostDate = DateTime.Now;
+            
 
             int userId = (userComboBox.SelectedItem as User).UserId;
 
             using (PriceroDBContext db = new PriceroDBContext())
             {
                 userPost.User = db.Users.Where(m => m.UserId == userId).Single();
+                userPost.Thread = db.ForumThreads.Where(m => m.ThreadID == Id).Single();
                 db.UserPosts.Add(userPost);
                 db.SaveChanges();
                 UserPostListWindow.dataGrid.ItemsSource = db.UserPosts.Where(m => m.Thread.ThreadID == Id).ToList();
